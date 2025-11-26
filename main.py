@@ -29,7 +29,7 @@ import cloudscraper
 import m3u8
 import core as helper
 from utils import progress_bar
-from vars import API_ID, API_HASH, BOT_TOKEN, DATABASE_URL # Import DATABASE_URL
+from vars import API_ID, API_HASH, BOT_TOKEN
 from aiohttp import ClientSession
 from pyromod import listen
 from subprocess import getstatusoutput
@@ -42,8 +42,7 @@ from pyrogram.errors.exceptions.bad_request_400 import StickerEmojiInvalid
 from pyrogram.types.messages_and_media import message
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-# Import the Database class from db.py
-from db import Database, db as db_instance_placeholder # Import db as a placeholder
+
 
 cookies_file_path = os.getenv("COOKIES_FILE_PATH", "youtube_cookies.txt")
 
@@ -59,13 +58,7 @@ async def show_random_emojis(message):
 # Define the owner's user ID
 OWNER_ID = 6090172625 # Replace with the actual owner's user ID
 
-# Initialize the database instance globally
-# This will attempt to connect to MongoDB when the bot starts
-try:
-    db = Database(DATABASE_URL)
-except Exception as e:
-    logging.error(f"Failed to initialize database: {e}")
-    sys.exit(1) # Exit if database connection fails
+
 
 AUTH_CHANNEL = -1003466115377
 
